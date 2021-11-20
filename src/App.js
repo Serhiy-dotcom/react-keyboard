@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import Keyboard from "./components/Keyboard/index.js";
+import Controller from "./components/Controller/index.js";
+import { KEYS_DEFAULT_STATE } from "./utils/index.js";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [keysColors, setKeysColors] = useState(KEYS_DEFAULT_STATE);
+	console.log(KEYS_DEFAULT_STATE);
+
+	const handleApplyColors = (color) => {
+		let newArray = [];
+
+		newArray = keysColors.map((keyLine) => {
+			return keyLine.map((key) =>
+				key.active ? { ...key, active: false, color: color } : key
+			);
+		});
+
+		setKeysColors(newArray);
+	};
+
+	const makeActive = (id) => {
+		let newArray = [];
+
+		newArray = keysColors.map((keyLine) => {
+			return keyLine.map((key) =>
+				key.id === id ? { ...key, active: !key.active } : key
+			);
+		});
+
+		setKeysColors(newArray);
+	};
+
+	return (
+		<div className="app">
+			<Controller
+				handleApplyColors={handleApplyColors}
+				keysColors={keysColors}
+			/>
+			<Keyboard keysColors={keysColors} makeActive={makeActive} />
+		</div>
+	);
 }
 
 export default App;
