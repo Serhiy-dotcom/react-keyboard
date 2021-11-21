@@ -7,8 +7,8 @@ function Presets({ presetsArray, handleDeletePreset, changeForPreset }) {
 	return (
 		<Styled.PresetsContainer>
 			{presetsArray.map((preset, index) => (
-				<>
-					<Styled.PresetsItem key={preset.id}>
+				<React.Fragment key={preset.id}>
+					<Styled.PresetsItem>
 						<Styled.PresetsName
 							onClick={() => changeForPreset(preset)}>
 							Group {index + 1}
@@ -18,7 +18,7 @@ function Presets({ presetsArray, handleDeletePreset, changeForPreset }) {
 						/>
 					</Styled.PresetsItem>
 					<AdditionalInfo preset={preset} />
-				</>
+				</React.Fragment>
 			))}
 		</Styled.PresetsContainer>
 	);

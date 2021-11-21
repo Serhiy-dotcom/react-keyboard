@@ -13,7 +13,8 @@ export const KeyboardContainer = styled.section`
 `;
 
 export const KeyboardLine = styled.article`
-	display: flex;
+	display: grid;
+	grid-template-columns: ${(props) => props.gridColumns};
 `;
 
 export const KeyboardKey = styled.button`
@@ -21,8 +22,7 @@ export const KeyboardKey = styled.button`
 	font-size: 1.25rem;
 	line-height: 1.5;
 	margin: 0.375rem 0.375rem 0.875rem;
-	padding: 0.5rem
-		${(props) => (props.paddingMult ? props.paddingMult : "1")}rem;
+	padding: 0.5rem 1rem;
 	box-shadow: 0 0 #7e7e7e, 0 0px #7e7e7e, 0 1px #7e7e7e, 0 2px #7e7e7e,
 		0 3px #7e7e7e, 0 4px #7e7e7e, 0 5px #7e7e7e, 0 6px #7e7e7e,
 		0 7px #7e7e7e, 0 8px #7e7e7e;

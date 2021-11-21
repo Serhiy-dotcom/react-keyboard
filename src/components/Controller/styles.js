@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const ControllerContainer = styled.aside`
-	width: 20vw;
+	width: 15vw;
+	max-width: 350px;
 	height: 100vh;
 	background-color: #181818;
 	padding: 5px 10px;

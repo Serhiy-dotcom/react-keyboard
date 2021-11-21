@@ -10,13 +10,11 @@ function App() {
 
 	const handleApplyColors = (color) => {
 		let newArray = [];
-
 		newArray = keysColors.map((keyLine) => {
 			return keyLine.map((key) =>
 				key.active ? { ...key, active: false, color: color } : key
 			);
 		});
-
 		setKeysColors(newArray);
 	};
 
@@ -38,13 +36,11 @@ function App() {
 
 	const makeActive = (id) => {
 		let newArray = [];
-
 		newArray = keysColors.map((keyLine) => {
 			return keyLine.map((key) =>
 				key.id === id ? { ...key, active: !key.active } : key
 			);
 		});
-
 		setKeysColors(newArray);
 	};
 
