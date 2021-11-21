@@ -1,18 +1,25 @@
 import styled from "styled-components";
 
-//background-color: #44454c;
-
 export const KeyboardContainer = styled.section`
 	background-color: #262424;
-	max-width: 1400px;
+	max-width: 2100px;
 	margin: 0 auto;
 	width: fit-content;
 	padding: 30px;
 	border-radius: 5px;
 	height: fit-content;
+	display: grid;
+	grid-template-columns: 5fr 1fr 1.2fr;
+	grid-column-gap: 40px;
+	position: relative;
 `;
 
-export const KeyboardLine = styled.article`
+export const KeyboardGroup = styled.article`
+	display: grid;
+	grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+`;
+
+export const KeyboardLine = styled.div`
 	display: grid;
 	grid-template-columns: ${(props) => props.gridColumns};
 `;
@@ -87,4 +94,25 @@ export const KeyboardKey = styled.button`
 		transform: translate3d(0, -8px, 0);
 		border-color: #989696;
 	}
+`;
+
+export const KeyboardLogo = styled.span`
+	position: absolute;
+	top: 20px;
+	right: 40px;
+	cursor: pointer;
+	font-size: 45px;
+	font-weight: 500;
+	color: ${(props) =>
+		props.inputColor && !props.active ? props.inputColor : "#fff"};
+
+	text-shadow: ${(props) =>
+		props.active
+			? `0 0 10px #fff, 0 0 20px #fff, 0 0 40px #fff, 0 0 80px #fff,
+	0 0 100px #fff, 0 0 120px #fff, 0 0 140px #fff`
+			: props.inputColor
+			? `0 0 10px ${props.inputColor}, 0 0 20px ${props.inputColor}, 0 0 40px ${props.inputColor}, 0 0 80px ${props.inputColor},
+			0 0 100px ${props.inputColor}`
+			: `0 0 10px none, 0 0 20px none, 0 0 40px none, 0 0 80px none,
+			0 0 100px none`};
 `;

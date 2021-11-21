@@ -20,7 +20,7 @@ export const ColorPicker = styled.div`
 	text-align: center;
 	position: absolute;
 	top: 100%;
-	width: 250px;
+	width: 300px;
 	right: 0;
 	z-index: 1;
 `;
@@ -40,7 +40,7 @@ export const ColorPickerBtn = styled.button`
 	border: 1px solid #053be8;
 	cursor: pointer;
 	border-radius: 5px;
-	font-size: 15px;
+	font-size: 19px;
 	margin: 20px 0 10px;
 `;
 

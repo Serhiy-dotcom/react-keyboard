@@ -6,41 +6,48 @@ import { KEYS_DEFAULT_STATE } from "./utils/index.js";
 
 function App() {
 	const [keysColors, setKeysColors] = useState(KEYS_DEFAULT_STATE);
-	console.log(KEYS_DEFAULT_STATE);
 
 	const handleApplyColors = (color) => {
 		let newArray = [];
-		newArray = keysColors.map((keyLine) => {
-			return keyLine.map((key) =>
-				key.active ? { ...key, active: false, color: color } : key
-			);
+		newArray = keysColors.map((keysGroups) => {
+			return keysGroups.map((keyLine) => {
+				return keyLine.map((key) =>
+					key.active ? { ...key, active: false, color: color } : key
+				);
+			});
 		});
 		setKeysColors(newArray);
 	};
 
 	const handleReset = () => {
 		setKeysColors(
-			keysColors.map((line) =>
-				line.map((elem) => ({ ...elem, color: "", active: false }))
+			keysColors.map((keysGroups) =>
+				keysGroups.map((line) =>
+					line.map((elem) => ({ ...elem, color: "", active: false }))
+				)
 			)
 		);
 	};
 
 	const handleSelectAll = () => {
 		setKeysColors(
-			keysColors.map((line) =>
-				line.map((elem) => ({ ...elem, active: true }))
+			keysColors.map((keysGroups) =>
+				keysGroups.map((line) =>
+					line.map((elem) => ({ ...elem, active: true }))
+				)
 			)
 		);
 	};
 
 	const makeActive = (id) => {
 		let newArray = [];
-		newArray = keysColors.map((keyLine) => {
-			return keyLine.map((key) =>
-				key.id === id ? { ...key, active: !key.active } : key
-			);
-		});
+		newArray = keysColors.map((keysGroups) =>
+			keysGroups.map((keyLine) => {
+				return keyLine.map((key) =>
+					key.id === id ? { ...key, active: !key.active } : key
+				);
+			})
+		);
 		setKeysColors(newArray);
 	};
 

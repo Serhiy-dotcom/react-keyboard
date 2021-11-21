@@ -16,8 +16,8 @@ export const PresetsItem = styled.li`
 `;
 
 export const PresetsDelete = styled.span`
-	width: 16px;
-	height: 16px;
+	width: 25px;
+	height: 20px;
 	opacity: 1;
 	position: relative;
 	cursor: pointer;
@@ -48,4 +48,5 @@ export const PresetsDelete = styled.span`
 
 export const PresetsName = styled.span`
 	cursor: pointer;
+	font-size: 20px;
 `;

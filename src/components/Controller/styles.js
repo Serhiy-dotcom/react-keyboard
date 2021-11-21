@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ControllerContainer = styled.aside`
 	width: 15vw;
-	max-width: 350px;
+	max-width: 400px;
 	height: 100vh;
 	background-color: #181818;
 	padding: 5px 10px;
@@ -35,7 +35,7 @@ export const ControllerFlex = styled.article`
 	align-items: center;
 `;
 
-export const ControllerSubTitle = styled.h4`
+export const ControllerSubTitle = styled.h2`
 	text-transform: uppercase;
 	color: gray;
 	letter-spacing: 2px;
@@ -44,8 +44,8 @@ export const ControllerSubTitle = styled.h4`
 
 export const ControllerAddPreset = styled.div`
 	display: inline-block;
-	width: 35px;
-	height: 35px;
+	width: 45px;
+	height: 45px;
 	background: linear-gradient(#fff 0 0), linear-gradient(#fff 0 0);
 	background-position: center;
 	background-size: 50% 2px, 2px 50%;
