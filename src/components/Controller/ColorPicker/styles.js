@@ -22,9 +22,17 @@ export const ColorPicker = styled.div`
 	top: 100%;
 	width: 250px;
 	right: 0;
+	z-index: 1;
 `;
 
-export const ColorPickerApplyBtn = styled.button`
+export const ColorPickerBtns = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+`;
+
+export const ColorPickerBtn = styled.button`
 	background-color: #fff;
 	padding: 5px 20px;
 	color: #053be8;
@@ -35,3 +43,11 @@ export const ColorPickerApplyBtn = styled.button`
 	font-size: 15px;
 	margin: 20px 0 10px;
 `;
+
+export const ColorPickerApplyBtn = styled(ColorPickerBtn)`
+	margin: 5px auto 10px;
+`;
+
+export const ColorPickerResetBtn = styled(ColorPickerBtn)``;
+
+export const ColorPickerSelectAllBtn = styled(ColorPickerBtn)``;

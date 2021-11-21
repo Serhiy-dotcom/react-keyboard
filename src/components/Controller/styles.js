@@ -2,10 +2,15 @@ import styled from "styled-components";
 
 export const ControllerContainer = styled.aside`
 	width: 20vw;
-	min-height: 100vh;
+	height: 100vh;
 	background-color: #181818;
 	padding: 5px 10px;
 	margin-right: 30px;
+	overflow-y: scroll;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
 `;
 
 export const ControllerTitle = styled.h1`

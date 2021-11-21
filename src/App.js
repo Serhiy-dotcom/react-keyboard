@@ -20,6 +20,22 @@ function App() {
 		setKeysColors(newArray);
 	};
 
+	const handleReset = () => {
+		setKeysColors(
+			keysColors.map((line) =>
+				line.map((elem) => ({ ...elem, color: "", active: false }))
+			)
+		);
+	};
+
+	const handleSelectAll = () => {
+		setKeysColors(
+			keysColors.map((line) =>
+				line.map((elem) => ({ ...elem, active: true }))
+			)
+		);
+	};
+
 	const makeActive = (id) => {
 		let newArray = [];
 
@@ -32,11 +48,18 @@ function App() {
 		setKeysColors(newArray);
 	};
 
+	const changeForPreset = (preset) => {
+		setKeysColors(preset.keysColors);
+	};
+
 	return (
 		<div className="app">
 			<Controller
 				handleApplyColors={handleApplyColors}
 				keysColors={keysColors}
+				changeForPreset={changeForPreset}
+				handleReset={handleReset}
+				handleSelectAll={handleSelectAll}
 			/>
 			<Keyboard keysColors={keysColors} makeActive={makeActive} />
 		</div>

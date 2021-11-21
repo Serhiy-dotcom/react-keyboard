@@ -11,7 +11,6 @@ export const PresetsItem = styled.li`
 	letter-spacing: 1px;
 	margin-bottom: 15px;
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
 	cursor: context-menu;
 `;
@@ -23,10 +22,8 @@ export const PresetsDelete = styled.span`
 	position: relative;
 	cursor: pointer;
 	margin-right: 10px;
-
-	&:hover {
-		opacity: 1;
-	}
+	margin-right: 10px;
+	margin-left: auto;
 
 	&:before,
 	&:after {
@@ -47,4 +44,8 @@ export const PresetsDelete = styled.span`
 	&:after {
 		transform: rotate(-45deg);
 	}
+`;
+
+export const PresetsName = styled.span`
+	cursor: pointer;
 `;
