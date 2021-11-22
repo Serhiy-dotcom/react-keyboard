@@ -10,9 +10,9 @@ import { KEYS_DEFAULT_STATE } from "../utils/index.js";
 export const keysReducer = (state = KEYS_DEFAULT_STATE, action) => {
 	switch (action.type) {
 		case APPLY_COLORS:
-			return state.map((keysGroups) => {
-				return keysGroups.map((keyLine) => {
-					return keyLine.map((key) =>
+			return state.map(keysGroups => {
+				return keysGroups.map(keyLine => {
+					return keyLine.map(key =>
 						key.active
 							? {
 									...key,
@@ -24,22 +24,21 @@ export const keysReducer = (state = KEYS_DEFAULT_STATE, action) => {
 				});
 			});
 		case RESET_ALL:
-			return state.map((keysGroups) =>
-				keysGroups.map((line) =>
-					line.map((elem) => ({ ...elem, color: "", active: false }))
+			return state.map(keysGroups =>
+				keysGroups.map(line =>
+					line.map(elem => ({ ...elem, color: "", active: false }))
 				)
 			);
 		case SELECT_ALL:
-			return state.map((keysGroups) =>
-				keysGroups.map((line) =>
-					line.map((elem) => ({ ...elem, active: true }))
+			return state.map(keysGroups =>
+				keysGroups.map(line =>
+					line.map(elem => ({ ...elem, active: true }))
 				)
 			);
 		case MAKE_ACTIVE:
-			console.log("yeap");
-			return state.map((keysGroups) =>
-				keysGroups.map((keyLine) => {
-					return keyLine.map((key) =>
+			return state.map(keysGroups =>
+				keysGroups.map(keyLine => {
+					return keyLine.map(key =>
 						key.id === action.payload.id
 							? { ...key, active: !key.active }
 							: key
@@ -49,7 +48,6 @@ export const keysReducer = (state = KEYS_DEFAULT_STATE, action) => {
 		case SET_PRESET:
 			return action.payload.preset.keysColors;
 		default:
-			console.log("nope");
 			return state;
 	}
 };

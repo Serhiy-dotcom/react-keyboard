@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 function Controller() {
 	const localStorage = window.localStorage;
 	const [presets, setPresets] = useState([]);
-	const keysColors = useSelector((state) => state);
+	const keysColors = useSelector(state => state);
 
 	useEffect(() => {
 		setPresets(JSON.parse(localStorage.getItem("presets")));
@@ -18,8 +18,30 @@ function Controller() {
 		localStorage.setItem("presets", JSON.stringify(presets));
 	}, [presets]);
 
-	const handleDeletePreset = (deleteIndex) => {
-		setPresets(presets.filter((preset) => preset.id !== deleteIndex));
+	useEffect(() => {
+		if (presets.length !== 0) {
+			setPresets(
+				presets.map(preset =>
+					preset.active
+						? { ...preset, keysColors: keysColors }
+						: preset
+				)
+			);
+		}
+	}, [keysColors]);
+
+	const handleDeletePreset = deleteIndex => {
+		setPresets(presets.filter(preset => preset.id !== deleteIndex));
+	};
+
+	const makePresetActive = activeIndex => {
+		setPresets(
+			presets.map(preset =>
+				preset.id === activeIndex
+					? { ...preset, active: true }
+					: { ...preset, active: false }
+			)
+		);
 	};
 
 	return (
@@ -40,8 +62,15 @@ function Controller() {
 				<Styled.ControllerAddPreset
 					onClick={() =>
 						setPresets([
-							...presets,
-							{ id: nanoid(), keysColors: keysColors },
+							...presets.map(preset => ({
+								...preset,
+								active: false,
+							})),
+							{
+								id: nanoid(),
+								keysColors: keysColors,
+								active: true,
+							},
 						])
 					}
 				/>
@@ -49,6 +78,7 @@ function Controller() {
 			<Presets
 				presetsArray={presets}
 				handleDeletePreset={handleDeletePreset}
+				makePresetActive={makePresetActive}
 			/>
 		</Styled.ControllerContainer>
 	);

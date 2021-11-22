@@ -5,8 +5,13 @@ import AdditionalInfo from "./AdditionalInfo/index.jsx";
 import { setPreset } from "../../../redux/actions.js";
 import { useDispatch } from "react-redux";
 
-function Presets({ presetsArray, handleDeletePreset }) {
+function Presets({ presetsArray, handleDeletePreset, makePresetActive }) {
 	const dispatch = useDispatch();
+
+	const handleCheckPreset = preset => {
+		makePresetActive(preset.id);
+		dispatch(setPreset(preset));
+	};
 
 	return (
 		<Styled.PresetsContainer>
@@ -14,7 +19,9 @@ function Presets({ presetsArray, handleDeletePreset }) {
 				<React.Fragment key={preset.id}>
 					<Styled.PresetsItem>
 						<Styled.PresetsName
-							onClick={() => dispatch(setPreset(preset))}>
+							active={preset?.active}
+							onClick={() => handleCheckPreset(preset)}
+						>
 							Group {index + 1}
 						</Styled.PresetsName>
 						<Styled.PresetsDelete
@@ -31,6 +38,7 @@ function Presets({ presetsArray, handleDeletePreset }) {
 Presets.propTypes = {
 	presetsArray: PropTypes.array,
 	handleDeletePreset: PropTypes.func,
+	makePresetActive: PropTypes.func,
 };
 
 export default Presets;

@@ -49,4 +49,7 @@ export const PresetsDelete = styled.span`
 export const PresetsName = styled.span`
 	cursor: pointer;
 	font-size: 20px;
+	${props =>
+		props.active &&
+		`text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #fff, 0 0 80px #fff`}
 `;
