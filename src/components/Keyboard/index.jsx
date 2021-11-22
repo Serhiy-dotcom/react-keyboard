@@ -1,8 +1,16 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useEffect } from "react";
 import * as Styled from "./styles.js";
+import { makeActive } from "../../redux/actions.js";
+import { useSelector, useDispatch } from "react-redux";
 
-function Keyboard({ keysColors, makeActive }) {
+function Keyboard() {
+	const keysColors = useSelector((state) => state);
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		console.log(keysColors);
+	}, [keysColors]);
+
 	return (
 		<Styled.KeyboardContainer>
 			{keysColors.map((keysGroup, index) => (
@@ -12,7 +20,9 @@ function Keyboard({ keysColors, makeActive }) {
 							key={keysGroup[0][0].id}
 							inputColor={keysGroup[0][0].color}
 							active={keysGroup[0][0].active}
-							onClick={() => makeActive(keysGroup[0][0].id)}>
+							onClick={() =>
+								dispatch(makeActive(keysGroup[0][0].id))
+							}>
 							{keysGroup[0][0].key}
 						</Styled.KeyboardLogo>
 					) : (
@@ -32,7 +42,9 @@ function Keyboard({ keysColors, makeActive }) {
 												inputColor={keyCode.color}
 												active={keyCode.active}
 												onClick={() =>
-													makeActive(keyCode.id)
+													dispatch(
+														makeActive(keyCode.id)
+													)
 												}
 												dangerouslySetInnerHTML={{
 													__html: keyCode.key,
@@ -50,10 +62,5 @@ function Keyboard({ keysColors, makeActive }) {
 		</Styled.KeyboardContainer>
 	);
 }
-
-Keyboard.propTypes = {
-	keysColors: PropTypes.array,
-	makeActive: PropTypes.func,
-};
 
 export default Keyboard;

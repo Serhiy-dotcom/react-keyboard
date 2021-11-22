@@ -1,19 +1,14 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import * as Styled from "./styles";
-import ColorPicker from "./ColorPicker/index.js";
-import Presets from "./Presets/index.js";
+import ColorPicker from "./ColorPicker/index.jsx";
+import Presets from "./Presets/index.jsx";
 import { nanoid } from "nanoid";
+import { useSelector } from "react-redux";
 
-function Controller({
-	handleApplyColors,
-	keysColors,
-	changeForPreset,
-	handleReset,
-	handleSelectAll,
-}) {
+function Controller() {
 	const localStorage = window.localStorage;
 	const [presets, setPresets] = useState([]);
+	const keysColors = useSelector((state) => state);
 
 	useEffect(() => {
 		setPresets(JSON.parse(localStorage.getItem("presets")));
@@ -36,11 +31,7 @@ function Controller({
 					Color Picker
 				</Styled.ControllerSubTitle>
 
-				<ColorPicker
-					handleApplyColors={handleApplyColors}
-					handleReset={handleReset}
-					handleSelectAll={handleSelectAll}
-				/>
+				<ColorPicker />
 			</Styled.ControllerFlex>
 
 			<Styled.ControllerHr />
@@ -58,18 +49,9 @@ function Controller({
 			<Presets
 				presetsArray={presets}
 				handleDeletePreset={handleDeletePreset}
-				changeForPreset={changeForPreset}
 			/>
 		</Styled.ControllerContainer>
 	);
 }
-
-Controller.propTypes = {
-	keysColors: PropTypes.array,
-	handleApplyColors: PropTypes.func,
-	changeForPreset: PropTypes.func,
-	handleReset: PropTypes.func,
-	handleSelectAll: PropTypes.func,
-};
 
 export default Controller;

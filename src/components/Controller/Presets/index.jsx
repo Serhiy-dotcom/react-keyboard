@@ -1,16 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
 import * as Styled from "./styles.js";
-import AdditionalInfo from "./AdditionalInfo/index.js";
+import AdditionalInfo from "./AdditionalInfo/index.jsx";
+import { setPreset } from "../../../redux/actions.js";
+import { useDispatch } from "react-redux";
 
-function Presets({ presetsArray, handleDeletePreset, changeForPreset }) {
+function Presets({ presetsArray, handleDeletePreset }) {
+	const dispatch = useDispatch();
+
 	return (
 		<Styled.PresetsContainer>
 			{presetsArray.map((preset, index) => (
 				<React.Fragment key={preset.id}>
 					<Styled.PresetsItem>
 						<Styled.PresetsName
-							onClick={() => changeForPreset(preset)}>
+							onClick={() => dispatch(setPreset(preset))}>
 							Group {index + 1}
 						</Styled.PresetsName>
 						<Styled.PresetsDelete
@@ -27,7 +31,6 @@ function Presets({ presetsArray, handleDeletePreset, changeForPreset }) {
 Presets.propTypes = {
 	presetsArray: PropTypes.array,
 	handleDeletePreset: PropTypes.func,
-	changeForPreset: PropTypes.func,
 };
 
 export default Presets;

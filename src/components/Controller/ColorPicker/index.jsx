@@ -1,15 +1,17 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import * as Styled from "./styles.js";
 import { ChromePicker } from "react-color";
+import { applyColors, resetAll, selectAll } from "../../../redux/actions.js";
+import { useDispatch } from "react-redux";
 
-function ColorPicker({ handleApplyColors, handleReset, handleSelectAll }) {
+function ColorPicker() {
+	const dispatch = useDispatch();
 	const [keyColor, setKeyColor] = useState("#111");
 	const [showPicker, setShowPicker] = useState(false);
 
 	const handleApply = () => {
 		setShowPicker(false);
-		handleApplyColors(keyColor);
+		dispatch(applyColors(keyColor));
 	};
 
 	return (
@@ -28,11 +30,11 @@ function ColorPicker({ handleApplyColors, handleReset, handleSelectAll }) {
 					/>
 					<Styled.ColorPickerBtns>
 						<Styled.ColorPickerResetBtn
-							onClick={() => handleReset()}>
+							onClick={() => dispatch(resetAll())}>
 							Reset All
 						</Styled.ColorPickerResetBtn>
 						<Styled.ColorPickerSelectAllBtn
-							onClick={() => handleSelectAll()}>
+							onClick={() => dispatch(selectAll())}>
 							Select All
 						</Styled.ColorPickerSelectAllBtn>
 						<Styled.ColorPickerApplyBtn
@@ -45,11 +47,5 @@ function ColorPicker({ handleApplyColors, handleReset, handleSelectAll }) {
 		</Styled.ColorPickerContainer>
 	);
 }
-
-ColorPicker.propTypes = {
-	handleApplyColors: PropTypes.func,
-	handleReset: PropTypes.func,
-	handleSelectAll: PropTypes.func,
-};
 
 export default ColorPicker;
