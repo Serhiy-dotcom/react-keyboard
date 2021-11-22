@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/react-keyboard/static/css/main.6fb2a947.chunk.css",
-    "main.js": "/react-keyboard/static/js/main.a1d45edd.chunk.js",
-    "main.js.map": "/react-keyboard/static/js/main.a1d45edd.chunk.js.map",
+    "main.js": "/react-keyboard/static/js/main.21dc25cd.chunk.js",
+    "main.js.map": "/react-keyboard/static/js/main.21dc25cd.chunk.js.map",
     "runtime-main.js": "/react-keyboard/static/js/runtime-main.063627c9.js",
     "runtime-main.js.map": "/react-keyboard/static/js/runtime-main.063627c9.js.map",
     "static/js/2.09e97fbb.chunk.js": "/react-keyboard/static/js/2.09e97fbb.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.063627c9.js",
     "static/js/2.09e97fbb.chunk.js",
     "static/css/main.6fb2a947.chunk.css",
-    "static/js/main.a1d45edd.chunk.js"
+    "static/js/main.21dc25cd.chunk.js"
   ]
 }
